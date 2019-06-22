@@ -13,15 +13,10 @@
         </div>
         <nav id="nav-menu-container">
           <ul class="nav-menu">
-            <!-- <li class="menu-active">
-              <router-link to="/">Home</router-link>|
-            </li> -->
             <li>
-              <!-- <a href="about-us.html">About Us</a> -->
               <router-link to="/jobs">Find jobs</router-link>|
             </li>
             <li>
-              <!-- <a href="category.html">Category</a> -->
               <router-link to="/">Post jobs</router-link>|
             </li>
             <li>
@@ -33,29 +28,14 @@
             <li>
               <a href="contact.html">Contact</a>
             </li>
-            <!-- <li class="menu-has-children">
-              <a href class="sf-with-ul">Pages</a>
-              <ul>
-                <li>
-                  <a href="elements.html">elements</a>
-                </li>
-                <li>
-                  <a href="search.html">search</a>
-                </li>
-                <li>
-                  <a href="single.html">single</a>
-                </li>
-              </ul>
-            </li> -->
             <li>
-              <a class="ticker-btn" href="#">Signup</a>
+              <router-link to="/signup">Signup</router-link>|
             </li>
             <li>
-              <a class="ticker-btn" href="#">Login</a>
+              <router-link to="/login">Login</router-link>|
             </li>
           </ul>
         </nav>
-        <!-- #nav-menu-container -->
       </div>
     </div>
   </header>

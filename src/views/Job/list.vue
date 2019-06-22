@@ -1,23 +1,5 @@
 <template>
   <div class="jb_content">
-    <!-- <div> -->
-      <!-- <div class="jumbotron">
-        <h1 class="jb_title">致力于为中国企业引进专业领域外籍人才 !</h1>
-        <p class="jb_subtitle">Make recruiting foreign talents more easier</p>
-        <p
-          style="  color: #fefefe !important;
-              margin-left: 80px;
-              width: 100px;
-              padding-top: 20px;"
-        >
-          <a
-            class="btn btn-primary"
-            href="http://www.jobleadchina.com/recruitment_guidance"
-            role="button"
-          >Learn more</a>
-        </p>
-      </div>
-    </div> -->
 
     <div class="container">
       <div class="searchbar">
