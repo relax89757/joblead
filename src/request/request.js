@@ -1,8 +1,11 @@
 import axios from "axios";
+import qs from "qs";
+
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded;charset=UTF-8";
 
-var url = "http://localhost:18080/";
+// var url = "https://www.pusaz.com:8443";
+var url = "http://localhost:18080";
 
 const service = axios.create({
   baseURL: url,
@@ -12,7 +15,9 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
-    config.data = JSON.stringify(config.data);
+    if (config.method == "post") {
+      config.data = qs.stringify(config.data);
+    }
     config.headers = {
       'Content-Type': 'application/x-www-form-urlencoded' //设置跨域头部
     };
@@ -26,23 +31,10 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     const res = response.data;
-    if (res.success) {
-      return res;
-    } else {
-      // Message({
-      //   message: res.msg || "error",
-      //   type: "error",
-      //   duration: 5 * 1000
-      // });
-    }
+    return res;
   },
   error => {
     console.log("err" + error); // for debug
-    // Message({
-    //   message: error.msg,
-    //   type: "error",
-    //   duration: 5 * 1000
-    // });
     return Promise.reject(error);
   }
 );

@@ -1608,11 +1608,6 @@ h6 {
   border: 1px solid #f1f1f1;
 }
 
-.primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.png) no-repeat center
-    center/cover;
-  border: none;
-}
 
 .confirm-checkbox {
   width: 16px;
@@ -1647,11 +1642,6 @@ h6 {
   border: 1px solid #f1f1f1;
 }
 
-.confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.png) no-repeat center
-    center/cover;
-  border: none;
-}
 
 .disabled-checkbox {
   width: 16px;
@@ -1691,12 +1681,6 @@ h6 {
   z-index: 3;
 }
 
-.disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.png) no-repeat center
-    center/cover;
-  border: none;
-}
-
 .primary-radio {
   width: 16px;
   height: 16px;
@@ -1730,11 +1714,6 @@ h6 {
   border: 1px solid #f1f1f1;
 }
 
-.primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.png) no-repeat center
-    center/cover;
-  border: none;
-}
 
 .confirm-radio {
   width: 16px;
@@ -1769,11 +1748,6 @@ h6 {
   border: 1px solid #f1f1f1;
 }
 
-.confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.png) no-repeat center
-    center/cover;
-  border: none;
-}
 
 .disabled-radio {
   width: 16px;
@@ -1813,11 +1787,6 @@ h6 {
   z-index: 3;
 }
 
-.disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.png) no-repeat center
-    center/cover;
-  border: none;
-}
 
 .default-select {
   height: 40px;
@@ -2365,10 +2334,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   bottom: 0;
 }
 
-.banner-area {
-  background: url(../img/header-bg.jpg) center;
-  background-size: cover;
-}
 
 .banner-area .overlay-bg {
   opacity: 0.95;
@@ -3882,11 +3847,6 @@ body.mobile-nav-active #mobile-nav-toggle {
                Start Blog Home  Page style
 ################
 */
-.blog-banner-area {
-  background: url(../img/blog/blog-banner.jpg) center;
-  background-size: cover;
-}
-
 .blog-banner-area .overlay-bg {
   background: rgba(0, 0, 0, 0.55);
 }

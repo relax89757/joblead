@@ -24,6 +24,18 @@ export default new Router({
       name: "signup",
       component: () =>
         import("../views/Account/signup.vue")
+    },
+    {
+      path: "/resume",
+      name: "resume",
+      component: () =>
+        import("../views/Resume/scan.vue")
+    },
+    {
+      path: "/manager",
+      name: "manager",
+      component: () =>
+        import("../views/Account/manager.vue")
     }
   ]
 });
