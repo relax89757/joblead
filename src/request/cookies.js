@@ -1,4 +1,5 @@
 export function setCookie(c_name, value, expires) {
+    expires = 60*60*1000;
     var exdate = new Date();
     exdate.setTime(exdate.getTime() + expires);
     document.cookie = c_name + "=" + escape(value)

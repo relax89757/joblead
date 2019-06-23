@@ -30,14 +30,14 @@
                   <span class="caret"></span>
                 </div>
                 <el-dropdown-menu slot="dropdown">
-                  <router-link to="/manger">
+                  <router-link to="/manager">
                     <el-dropdown-item>Manager</el-dropdown-item>
                   </router-link>
-                  <router-link to="/resume">
+                  <!-- <router-link to="/resume">
                     <el-dropdown-item>Resume</el-dropdown-item>
-                  </router-link>
+                  </router-link> -->
                   <el-dropdown-item>
-                    <span style="display:block;" @click="logout">logOut</span>
+                    <span style="display:block;" @click="logout">Logout</span>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>

@@ -1,5 +1,5 @@
 <template>
-    <div class="contain"> 暂无公司信息</div>
+    <div class="contain"> 暂无收藏列表</div>
 </template>
 
 <script>

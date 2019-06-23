@@ -31,9 +31,9 @@
                 >
                 <i class="ion-ios-location-outline"></i>
               </div>
-              <button type="submit" class="button">
+              <!-- <button type="submit" class="button">
                 <i class="ion-ios-search-strong"></i>
-              </button>
+              </button> -->
             </form>
             <div class="keywords flex">
               <h4 class="self-center">Popular Keywords:</h4>

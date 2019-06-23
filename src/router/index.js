@@ -36,6 +36,18 @@ export default new Router({
       name: "manager",
       component: () =>
         import("../views/Account/manager.vue")
+    },
+    {
+      path: "/postjob",
+      name: "postjob",
+      component: () =>
+        import("../views/Job/post.vue")
+    },
+    {
+      path: "/jobs",
+      name: "jobs",
+      component: () =>
+        import("../views/Job/search.vue")
     }
   ]
 });
