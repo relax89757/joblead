@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <el-tabs tab-position="left" style="height: 200px;">
+    <el-tabs tab-position="left" style="height: 600px;">
       <el-tab-pane label="用户管理">
         <UserInfo></UserInfo>
       </el-tab-pane>

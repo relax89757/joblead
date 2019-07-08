@@ -35,17 +35,7 @@
             tabindex="1"
           />
         </el-form-item>
-        <el-form-item prop="email">
-          <el-input
-            ref="email"
-            v-model="userForm.email"
-            placeholder="email"
-            name="email"
-            type="text"
-            tabindex="1"
-            auto-complete="on"
-          />
-        </el-form-item>
+        
         <el-form-item prop="firstname">
           <el-input
             ref="firstname"
@@ -66,17 +56,39 @@
             tabindex="1"
           />
         </el-form-item>
-        <el-form-item prop="username">
+        <el-form-item prop="country">
           <el-input
-            ref="username"
-            v-model="userForm.username"
-            placeholder="username"
-            name="username"
+            ref="country"
+            v-model="userForm.country"
+            placeholder="country"
+            name="country"
             type="text"
             tabindex="1"
+            auto-complete="on"
           />
         </el-form-item>
-
+        <el-form-item prop="birth_date">
+          <el-input
+            ref="birth_date"
+            v-model="userForm.birth_date"
+            placeholder="birth_date"
+            name="birth_date"
+            type="text"
+            tabindex="1"
+            auto-complete="on"
+          />
+        </el-form-item>
+        <el-form-item prop="gender">
+          <el-input
+            ref="gender"
+            v-model="userForm.gender"
+            placeholder="gender"
+            name="gender"
+            type="text"
+            tabindex="1"
+            auto-complete="on"
+          />
+        </el-form-item>
         <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
           <el-form-item prop="password">
             <el-input
@@ -146,8 +158,8 @@ export default {
         gender: "",
         country: "",
         phone: "",
-        email: "",
-        password: ""
+        password: "",
+        code:""
       },
       login: { username: "", password: "" },
       loginRules: {
@@ -189,15 +201,15 @@ export default {
         if (valid) {
           this.loading = true;
           var login = {};
-          login.email = this.userForm.email;
           login.phone = this.userForm.phone;
-
-          login.user_name = this.userForm.username;
+          login.code = this.userForm.code;
           login.password = md5(md5(this.userForm.password));
 
           login.first_name = this.userForm.firstname;
           login.last_name = this.userForm.lastname;
-          login.code = this.userForm.code;
+          login.gender = this.userForm.gender;
+          login.country = this.userForm.country;
+          login.birth_date = this.userForm.birth_date;
           userSignup(login).then(response => {
             if (response.success) {
               setCookie("token", response.data.TOKEN, 60 * 60 * 1000);

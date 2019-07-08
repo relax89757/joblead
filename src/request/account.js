@@ -33,3 +33,19 @@ export function signupCode(data) {
     data
   });
 }
+
+export function createResume(data) {
+  return request({
+    url: "/resume/createResume",
+    method: "post",
+    data
+  });
+}
+
+export function getResumeByUserID(data) {
+  return request({
+    url: "/resume/getResumeByUserID",
+    method: "post",
+    data
+  });
+}

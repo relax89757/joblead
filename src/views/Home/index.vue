@@ -18,8 +18,8 @@ export default {
     if (token && !userinfo) {
       cookiesLogin().then(response => {
         if (response.success) {
-           this.$store.commit("SET_USERINFO", response.data);
-          setCookie("token", response.data.TOKEN, 10000);
+          this.$store.commit("SET_USERINFO", response.data);
+          setCookie("token", response.data.TOKEN, 60 * 60 * 1000);
         }
       });
     }
