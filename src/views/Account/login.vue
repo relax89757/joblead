@@ -139,10 +139,18 @@ export default {
           this.loading = true;
           setCookie("jp", this.loginForm.username, 10 * 1000);
           setCookie("sp", md5(md5(this.loginForm.password)), 10 * 1000);
-          userLogin().then(response => {
+          userLogin({
+            phone: this.loginForm.username,
+            password: md5(md5(this.loginForm.password))
+          }).then(response => {
             this.loading = false;
             if (response.success) {
-              setCookie("token", response.data.TOKEN, 60 * 60 * 1000);
+              setCookie("token", response.TOKEN, 60 * 60 * 1000);
+              setCookie(
+                "userinfo",
+                JSON.stringify(response.data),
+                60 * 60 * 1000
+              );
               this.$store.commit("SET_USERINFO", response.data);
               this.$router.push({ path: "/" });
             } else {

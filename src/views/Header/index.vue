@@ -4,17 +4,13 @@
       <div class="row align-items-center justify-content-between d-flex">
         <div id="logo">
           <router-link to="/">
-            <img
-              src="../../assets/img/logo.png"
-              alt="jobleadchina"
-              title="jobleadchina"
-            >
+            <img src="../../assets/img/logo.png" alt="jobleadchina" title="jobleadchina" />
           </router-link>|
         </div>
         <nav id="nav-menu-container">
           <ul class="nav-menu">
-            <li>
-              <router-link to="/jobs">Find jobs</router-link>|
+           <li>
+              <router-link to="/">Homepage</router-link>|
             </li>
             <li>
               <router-link to="/postjob">Post jobs</router-link>|
@@ -25,7 +21,7 @@
             <li v-else class="wrap">
               <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
                 <div class="avatar-wrapper">
-                  <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar"> -->
+                  <img src="../../assets/img/profile-icon01.png" class="user-avatar" />
                   <span class="nickname">{{userinfo.USER_NAME}}</span>
                   <span class="caret"></span>
                 </div>
@@ -35,7 +31,7 @@
                   </router-link>
                   <!-- <router-link to="/resume">
                     <el-dropdown-item>Resume</el-dropdown-item>
-                  </router-link> -->
+                  </router-link>-->
                   <el-dropdown-item>
                     <span style="display:block;" @click="logout">Logout</span>
                   </el-dropdown-item>
@@ -100,5 +96,9 @@ export default {
 }
 .wrap:hover .caret {
   border-top: 4px solid #b3b3b3;
+}
+.user-avatar {
+  width: 20px;
+  height: 20px;
 }
 </style>
