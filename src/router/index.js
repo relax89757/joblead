@@ -48,6 +48,17 @@ export default new Router({
       name: "jobs",
       component: () =>
         import("../views/Job/search.vue")
+    },
+    {
+      path: "/detail/:id(\\d+)",
+      component: () => import("../views/Job/detail.vue"),
+      name: "detail"
+    }
+    ,
+    {
+      path: "/validate/:id",
+      component: () => import("../views/Validate/company.vue"),
+      name: "validate"
     }
   ]
 });

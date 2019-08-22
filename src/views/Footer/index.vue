@@ -86,6 +86,68 @@ export default {
   components: {}
 };
 </script>
-<style src="../../assets/css/app.css"></style>
-<style>
+<style scoped>
+.footer-container {
+  background-color: #5b6b7b;
+}
+
+.footer {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.contactInfo-container {
+  display: -webkit-box;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.contactInfoList-container {
+  margin-top: 20px;
+  color: #fefefe;
+}
+
+.contactInfo-list {
+  list-style: outside;
+  list-style-type: none;
+  text-align: left;
+  padding-left: 40px;
+}
+
+.contactInfo {
+  margin-bottom: 5px;
+}
+
+.qrcode-container {
+  width: 180px;
+  color: #fefefe;
+  margin-top: 50px;
+}
+
+.qrcode {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.headhunter-introduce {
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding-left: 40px;
+  color: #fefefe;
+}
+
+.jobThumbnail {
+  display: -webkit-flex;
+  width: 980px !important;
+  margin: 0 auto;
+}
+.foot-title {
+  font-size: 24px;
+  text-align: left;
+  margin-top: 50px;
+  padding-left: 40px;
+  color: #fefefe;
+}
 </style>

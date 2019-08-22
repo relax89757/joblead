@@ -4,19 +4,19 @@ import qs from "qs";
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded;charset=UTF-8";
 
-var url = "https://www.pusaz.com:8443";
-// var url = "http://localhost:18080";
+// var url = "http://www.pusaz.com:18080";
+var url = "http://localhost:18080";
 
 const service = axios.create({
   baseURL: url,
   timeout: 5000,
-  withCredentials: true
+  withCredentials: false
 });
 
 service.interceptors.request.use(
   config => {
     if (config.method == "post") {
-      config.data = qs.stringify(config.data);
+      config.data = qs.stringify(config.data,{ indices: false });
     }
     config.headers = {
       'Content-Type': 'application/x-www-form-urlencoded' //设置跨域头部

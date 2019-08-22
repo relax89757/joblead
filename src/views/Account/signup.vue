@@ -1,9 +1,7 @@
 <template>
   <div class="login">
     <div class="formbox">
-      <h1
-        class="form-title align-items-center"
-      ></h1>
+      <h1 class="form-title align-items-center"></h1>
 
       <el-form
         ref="userForm"
@@ -12,8 +10,9 @@
         class="login-form"
         label-position="left"
       >
-        <el-form-item prop="phone">
+        <el-form-item>
           <el-input
+            prop="phone"
             ref="phone"
             v-model="userForm.phone"
             placeholder="phone"
@@ -21,7 +20,10 @@
             type="text"
           >
             <template slot="append">
-              <div class="sendcode" @click="sendCode">发送验证码</div>
+              <div class="sendcode" @click="sendCode">
+                <span v-if="!codeFlag">发送验证码</span>
+                <span v-else>{{codeNum}}</span>
+              </div>
             </template>
           </el-input>
         </el-form-item>
@@ -35,7 +37,7 @@
             tabindex="1"
           />
         </el-form-item>
-        
+
         <el-form-item prop="firstname">
           <el-input
             ref="firstname"
@@ -56,38 +58,50 @@
             tabindex="1"
           />
         </el-form-item>
+
         <el-form-item prop="country">
-          <el-input
-            ref="country"
+          <el-select
             v-model="userForm.country"
+            filterable
+            allow-create
+            default-first-option
             placeholder="country"
-            name="country"
-            type="text"
-            tabindex="1"
-            auto-complete="on"
-          />
+            style="width:100%"
+          >
+            <el-option
+              v-for="item in countrylist"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item prop="birth_date">
-          <el-input
-            ref="birth_date"
-            v-model="userForm.birth_date"
+          <el-date-picker
+            type="date"
             placeholder="birth_date"
-            name="birth_date"
-            type="text"
-            tabindex="1"
+            v-model="userForm.birth_date"
+            style="width: 100%;"
             auto-complete="on"
-          />
+          ></el-date-picker>
         </el-form-item>
+
         <el-form-item prop="gender">
-          <el-input
-            ref="gender"
+          <el-select
             v-model="userForm.gender"
+            filterable
+            allow-create
+            default-first-option
             placeholder="gender"
-            name="gender"
-            type="text"
-            tabindex="1"
-            auto-complete="on"
-          />
+            style="width:100%"
+          >
+            <el-option
+              v-for="item in genderlist"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
         <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
           <el-form-item prop="password">
@@ -105,6 +119,21 @@
             />
           </el-form-item>
         </el-tooltip>
+
+        <el-form-item prop="confirmPassword">
+          <el-input
+            :key="passwordType"
+            ref="confirm password"
+            v-model="userForm.confirmpassword"
+            :type="passwordType"
+            placeholder="confirm password"
+            name="password"
+            tabindex="2"
+            auto-complete="on"
+            @blur="capsTooltip = false"
+            @keyup.enter.native="handSignUp"
+          />
+        </el-form-item>
 
         <el-button
           class="center-button"
@@ -133,7 +162,11 @@ import { setCookie } from "@/request/cookies";
 import { validUsername } from "@/request/validate";
 import { Message } from "element-ui";
 import md5 from "js-md5";
+import { mapGetters } from "vuex";
 export default {
+  computed: {
+    ...mapGetters(["config"])
+  },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
@@ -159,10 +192,15 @@ export default {
         country: "",
         phone: "",
         password: "",
-        code:""
+        confirmpassword: "",
+        code: ""
       },
       login: { username: "", password: "" },
       loginRules: {
+        phone: [{ required: true, message: "请输入手机号", trigger: "blur" }],
+        username: [
+          { required: true, message: "请输入用户名", trigger: "blur" }
+        ],
         username: [
           { required: true, trigger: "blur", validator: validateUsername }
         ],
@@ -170,23 +208,41 @@ export default {
           { required: true, trigger: "blur", validator: validatePassword }
         ]
       },
+      countrylist: [],
+      genderlist: [],
       passwordType: "password",
       capsTooltip: false,
       loading: false,
       showDialog: false,
-      redirect: undefined
+      redirect: undefined,
+      codeNum: 60,
+      codeFlag: false
     };
+  },
+  created() {
+    this.countrylist = this.config.country;
+    this.genderlist = this.config.gender;
   },
   methods: {
     sendCode() {
+      if (this.codeFlag) {
+        return;
+      }
       if (!this.userForm.phone) {
+        Message({
+          message: "手机号不能为空",
+          type: "error",
+          duration: 2 * 1000
+        });
         return;
       }
       signupCode({ phone: this.userForm.phone }).then(response => {
         if (response.success) {
-          setCookie("token", response.data.TOKEN, 60 * 60 * 1000);
-          setCookie("userinfo", response.data, 60 * 60 * 1000);
-          this.$router.push({ path: "/" });
+          this.codeFlag = true;
+          var that = this;
+          setInterval(function() {
+            that.codeNum--;
+          }, 1000);
         } else {
           Message({
             message: response.msg || "error",
@@ -230,7 +286,14 @@ export default {
       });
     }
   },
-  components: {}
+  components: {},
+  watch: {
+    codeNum(val, oldVal) {
+      if (val <= 0) {
+        this.codeFlag = false;
+      }
+    }
+  }
 };
 </script>
 
@@ -318,8 +381,8 @@ input:-webkit-autofill {
   user-select: none;
 }
 .login {
+  min-height: 100%;
   width: 100%;
-  height: 600px;
   background-image: url(../../assets/img/index_img.jpg);
   background-size: cover;
   display: flex;
@@ -378,7 +441,7 @@ input:-webkit-autofill {
   color: #ffc72d !important;
   cursor: pointer;
 }
-.sendcode{
+.sendcode {
   cursor: pointer;
 }
 </style>
